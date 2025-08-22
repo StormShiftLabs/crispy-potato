@@ -1,70 +1,100 @@
-import React from 'react';
-import { Card, CardHeader, CardContent } from '../components/ui/Card';
-import Badge from '../components/ui/Badge';
-import Button from '../components/ui/Button';
-import ProgressBar from '../components/ui/ProgressBar';
-import { ChevronRightIcon, PlusIcon, RefreshCwIcon, ChevronDownIcon, HeartIcon, BrainIcon, FlameIcon } from 'lucide-react';
+import React from "react";
+import { Card, CardHeader, CardContent } from "../components/ui/Card";
+import Badge from "../components/ui/Badge";
+import Button from "../components/ui/Button";
+import ProgressBar from "../components/ui/ProgressBar";
+import {
+  ChevronRightIcon,
+  PlusIcon,
+  RefreshCwIcon,
+  ChevronDownIcon,
+  HeartIcon,
+  BrainIcon,
+  FlameIcon,
+} from "lucide-react";
 const Home = () => {
   // Mock user data
   const user = {
-    name: 'Your Name', // Change this to your name
-    goal: 'Muscle Building',
+    name: "Justin Madanayake", // Change this to your name
+    goal: "Muscle Building",
     calorieTarget: 1800,
     caloriesConsumed: 850,
     macros: {
       protein: {
         target: 120,
-        consumed: 65
+        consumed: 65,
       },
       carbs: {
         target: 180,
-        consumed: 90
+        consumed: 90,
       },
       fat: {
         target: 60,
-        consumed: 30
-      }
-    }
+        consumed: 30,
+      },
+    },
   };
   // Mock meal plan data
-  const todaysMeals = [{
-    id: 1,
-    time: '7:30 AM',
-    name: 'Avocado & Egg Toast',
-    calories: 350,
-    completed: true,
-    image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80'
-  }, {
-    id: 2,
-    time: '12:00 PM',
-    name: 'Mediterranean Quinoa Bowl',
-    calories: 500,
-    completed: true,
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80'
-  }, {
-    id: 3,
-    time: '3:30 PM',
-    name: 'Greek Yogurt & Berries',
-    calories: 200,
-    completed: false,
-    image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80'
-  }, {
-    id: 4,
-    time: '7:00 PM',
-    name: 'Baked Salmon & Vegetables',
-    calories: 650,
-    completed: false,
-    image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80'
-  }];
-  const groceryReminders = ['Buy ingredients for weekend meals', 'Restock protein powder'];
+  const todaysMeals = [
+    {
+      id: 1,
+      time: "7:30 AM",
+      name: "Avocado & Egg Toast",
+      calories: 350,
+      completed: true,
+      image:
+        "https://images.unsplash.com/photo-1525351484163-7529414344d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
+    },
+    {
+      id: 2,
+      time: "12:00 PM",
+      name: "Mediterranean Quinoa Bowl",
+      calories: 500,
+      completed: true,
+      image:
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
+    },
+    {
+      id: 3,
+      time: "3:30 PM",
+      name: "Greek Yogurt & Berries",
+      calories: 200,
+      completed: false,
+      image:
+        "https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
+    },
+    {
+      id: 4,
+      time: "7:00 PM",
+      name: "Baked Salmon & Vegetables",
+      calories: 650,
+      completed: false,
+      image:
+        "https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
+    },
+    {
+      id: 5,
+      time: "9:00 PM",
+      name: "Ice Cream Snack",
+      calories: 500,
+      completed: true,
+      image:
+        "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=1200&q=80&auto=format&fit=crop",
+    },
+  ];
+  const groceryReminders = [
+    "Buy ingredients for weekend meals",
+    "Restock protein powder",
+  ];
   // Get current time of day for greeting
   const getGreeting = () => {
     const hour = new Date().getHours();
-    if (hour < 12) return 'Good morning';
-    if (hour < 18) return 'Good afternoon';
-    return 'Good evening';
+    if (hour < 12) return "What a beautiful morning";
+    if (hour < 18) return "Good afternoon, Hope you are having a great day";
+    return "Good evening";
   };
-  return <div className="max-w-md mx-auto px-4 py-6">
+  return (
+    <div className="max-w-md mx-auto px-4 py-6">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
@@ -115,12 +145,34 @@ const Home = () => {
                 {user.caloriesConsumed} / {user.calorieTarget}
               </span>
             </div>
-            <ProgressBar value={user.caloriesConsumed} max={user.calorieTarget} color="emerald" />
+            <ProgressBar
+              value={user.caloriesConsumed}
+              max={user.calorieTarget}
+              color="emerald"
+            />
           </div>
           <div className="grid grid-cols-3 gap-3">
-            <MacroCard title="Protein" current={user.macros.protein.consumed} target={user.macros.protein.target} color="blue" icon={<HeartIcon size={16} className="text-blue-600" />} />
-            <MacroCard title="Carbs" current={user.macros.carbs.consumed} target={user.macros.carbs.target} color="amber" icon={<BrainIcon size={16} className="text-amber-600" />} />
-            <MacroCard title="Fat" current={user.macros.fat.consumed} target={user.macros.fat.target} color="coral" icon={<FlameIcon size={16} className="text-orange-600" />} />
+            <MacroCard
+              title="Protein"
+              current={user.macros.protein.consumed}
+              target={user.macros.protein.target}
+              color="blue"
+              icon={<HeartIcon size={16} className="text-blue-600" />}
+            />
+            <MacroCard
+              title="Carbs"
+              current={user.macros.carbs.consumed}
+              target={user.macros.carbs.target}
+              color="amber"
+              icon={<BrainIcon size={16} className="text-amber-600" />}
+            />
+            <MacroCard
+              title="Fat"
+              current={user.macros.fat.consumed}
+              target={user.macros.fat.target}
+              color="coral"
+              icon={<FlameIcon size={16} className="text-orange-600" />}
+            />
           </div>
         </CardContent>
       </Card>
@@ -133,17 +185,24 @@ const Home = () => {
           </Button>
         </div>
         <div className="space-y-3">
-          {todaysMeals.map(meal => <Card key={meal.id} className="overflow-hidden">
+          {todaysMeals.map((meal) => (
+            <Card key={meal.id} className="overflow-hidden">
               <div className="flex">
                 <div className="w-20 h-20">
-                  <img src={meal.image} alt={meal.name} className="w-full h-full object-cover" />
+                  <img
+                    src={meal.image}
+                    alt={meal.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="flex-1 p-3">
                   <div className="flex justify-between">
                     <span className="text-xs font-medium text-gray-500">
                       {meal.time}
                     </span>
-                    {meal.completed && <Badge variant="success">Completed</Badge>}
+                    {meal.completed && (
+                      <Badge variant="success">Completed</Badge>
+                    )}
                   </div>
                   <h3 className="font-medium text-gray-900 mt-1">
                     {meal.name}
@@ -155,15 +214,16 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </Card>)}
+            </Card>
+          ))}
         </div>
         <Button className="w-full mt-4" variant="outline">
           <PlusIcon size={16} className="mr-1" /> Add Custom Meal
         </Button>
-        <Button 
-          className="w-full mt-2" 
+        <Button
+          className="w-full mt-2"
           variant="coral"
-          onClick={() => alert('Hello from Crispy Potato! 🥔')}
+          onClick={() => alert("Hello from Crispy Potato! 🥔")}
         >
           Test Button
         </Button>
@@ -179,26 +239,33 @@ const Home = () => {
           </div>
         </CardHeader>
         <CardContent>
-          {groceryReminders.length > 0 ? <ul className="space-y-2">
-              {groceryReminders.map((reminder, index) => <li key={index} className="flex items-center text-sm">
+          {groceryReminders.length > 0 ? (
+            <ul className="space-y-2">
+              {groceryReminders.map((reminder, index) => (
+                <li key={index} className="flex items-center text-sm">
                   <div className="w-5 h-5 rounded-full border border-emerald-500 flex items-center justify-center mr-2">
                     <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
                   </div>
                   {reminder}
-                </li>)}
-            </ul> : <div className="text-center py-6">
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className="text-center py-6">
               <p className="text-gray-500">No grocery reminders</p>
-            </div>}
+            </div>
+          )}
         </CardContent>
       </Card>
-    </div>;
+    </div>
+  );
 };
 const MacroCard = ({
   title,
   current,
   target,
   color,
-  icon
+  icon,
 }: {
   title: string;
   current: number;
@@ -206,8 +273,9 @@ const MacroCard = ({
   color: string;
   icon: React.ReactNode;
 }) => {
-  const percentage = Math.round(current / target * 100);
-  return <div className="bg-gray-50 p-3 rounded-lg">
+  const percentage = Math.round((current / target) * 100);
+  return (
+    <div className="bg-gray-50 p-3 rounded-lg">
       <div className="flex items-center mb-1">
         <div className="mr-1">{icon}</div>
         <span className="text-xs font-medium">{title}</span>
@@ -217,6 +285,7 @@ const MacroCard = ({
         <span className="text-xs text-gray-500 ml-1">/{target}g</span>
       </div>
       <ProgressBar value={current} max={target} color={color} />
-    </div>;
+    </div>
+  );
 };
 export default Home;
